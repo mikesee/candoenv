@@ -6,11 +6,23 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 jobs:
+  makeOutput:
+    runs-on: ubuntu-latest
+    outputs:
+      ENVIRONMENT: ${{ steps.derp.outputs.ENVIRONMENT }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: derpid
+        id: derp
+        run: |
+          echo "ENVIRONMENT=production" >> $GITHUB_OUTPUT
+   
   buildProduction:
-    environment: production
+    needs: makeOutput
+    environment: ${{ needs.makeOutput.outputs.ENVIRONMENT }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Run a one-line script
         run: |
-          echo Helloworld;
+          echo ${{ needs.makeOutput.outputs.ENVIRONMENT }};
