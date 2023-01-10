@@ -16,6 +16,7 @@ jobs:
         id: derp
         run: |
           echo ENVIRONMENT=staging >> $GITHUB_OUTPUT
+          echo staging >> $GITHUB_ENV
    
   buildStaging:
     needs: makeOutput
