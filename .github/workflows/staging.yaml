@@ -6,8 +6,20 @@ on:
     branches: [ "staging" ]
   workflow_dispatch:
 jobs:
+  makeOutput:
+    runs-on: ubuntu-latest
+    outputs:
+      ENVIRONMENT: ${{ steps.derp.outputs.ENVIRONMENT }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: derpid
+        id: derp
+        run: |
+          echo ENVIRONMENT=staging >> $GITHUB_OUTPUT
+   
   buildStaging:
-    environment: ${{ secrets.HELLOWORLD }}
+    needs: makeOutput
+    environment: fromJson(needs.build.outputs.ENVIRONMENT)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
