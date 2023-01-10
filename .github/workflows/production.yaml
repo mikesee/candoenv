@@ -1,18 +1,16 @@
-name: deployStaging
+name: deployProduction
 on:
   push:
-    branches: [ "staging" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "staging" ]
+    branches: [ "main" ]
   workflow_dispatch:
 jobs:
-  buildStaging:
-    environment: staging
+  buildProduction:
+    environment: production
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Run a one-line script
         run: |
           echo Helloworld;
-      
- 
