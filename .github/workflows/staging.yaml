@@ -19,12 +19,12 @@ jobs:
    
   buildStaging:
     needs: makeOutput
-    environment: ${{ fromJson(needs.makeOutput.outputs.ENVIRONMENT) }}
+    environment: ${{ needs.makeOutput.outputs.ENVIRONMENT }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Run a one-line script
         run: |
-          echo $GITHUB_ENV;
+          echo ${{ needs.makeOutput.outputs.ENVIRONMENT }};
       
  
