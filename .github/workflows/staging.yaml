@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 jobs:
   buildStaging:
-    environment: staging
+    environment: ${{ secrets.HELLOWORLD }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
