@@ -20,7 +20,7 @@ jobs:
    
   buildStaging:
     needs: makeOutput
-    environment: fromJson(needs.build.outputs.ENVIRONMENT)
+    environment: ${{ needs.build.outputs.ENVIRONMENT }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
