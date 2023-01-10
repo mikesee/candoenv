@@ -17,7 +17,7 @@ jobs:
         run: |
           echo "ENVIRONMENT=production" >> $GITHUB_OUTPUT
    
-  buildStaging:
+  buildProduction:
     needs: makeOutput
     environment: ${{ needs.makeOutput.outputs.ENVIRONMENT }}
     runs-on: ubuntu-latest
