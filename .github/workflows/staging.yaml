@@ -21,7 +21,7 @@ jobs:
     needs: makeOutput
     environment:
       name: ${{ needs.makeOutput.outputs.ENVIRONMENT }}
-      url: https://staging.derpalerp.com
+      url: "https://${{ needs.makeOutput.outputs.ENVIRONMENT }}.derpalerp.com"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
