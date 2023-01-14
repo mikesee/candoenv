@@ -20,8 +20,8 @@ jobs:
   buildStaging:
     needs: makeOutput
     environment:
-        name: ${{ needs.makeOutput.outputs.ENVIRONMENT }}
-        url: https://staging.derpalerp.com
+      name: ${{ needs.makeOutput.outputs.ENVIRONMENT }}
+      url: https://staging.derpalerp.com
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
